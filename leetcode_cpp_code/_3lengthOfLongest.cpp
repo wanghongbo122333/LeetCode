@@ -86,17 +86,18 @@
 //         return ans;
 //     }
 // };
-
+#include <string>
+#include <unordered_set>
+using namespace std;
 class Solution
 {
 public:
     int lengthOfLongestSubstring(string s)
     {
-        int l = s.length();
+        int l = s.size();
         int left = 0, right = 0;
         int ans = 0;
         unordered_set<char> my_set;
-        int count = 0;
         //while中是滑动窗口的左边界
         while (right < l && left < l)
         {
@@ -106,7 +107,7 @@ public:
                 ans = max(ans, right - left);
             }
             else
-            {
+            { //abcb
                 my_set.erase(s[left++]);
             }
         }
@@ -114,3 +115,9 @@ public:
     }
 };
 // @lc code=end
+int main()
+{
+    Solution s = Solution();
+    s.lengthOfLongestSubstring("abcbefgbc");
+    return 0;
+}
